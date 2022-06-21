@@ -1,4 +1,4 @@
 export interface TemplateScreenProps { 
-    children: JSX.Element;
+    children: JSX.Element | JSX.Element[];
     safeAreaViewStlye?: any;
 }

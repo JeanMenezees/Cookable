@@ -1,4 +1,4 @@
 export interface SoraTextProps {
-    children: JSX.Element;
+    children: JSX.Element | string;
     extraStyle: any;
 }
