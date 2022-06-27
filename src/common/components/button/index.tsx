@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
 		margin: 16,
 		backgroundColor: 'black',
 		paddingVertical: 16,
-		borderRadius: 8
+		borderRadius: 8,
+		marginBottom: 32
 	},
 	textoBotao: { 
 		color: 'white',

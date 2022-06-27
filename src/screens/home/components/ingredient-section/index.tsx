@@ -1,32 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { StyleSheet, View } from 'react-native';
 import SoraText from '../../../../common/components/text';
+import { ApiService } from '../../../../services/api';
+import { IIngredientSection } from './ingredient-section';
+import { IngredientSectionProps } from './props';
 
-const temperos = [
-	{
-		nome: 'Pimenta',
-	},
-	{
-		nome: 'Sal',
-	},
-];
+export default function IngredientSection(props: IngredientSectionProps): JSX.Element {
+	const [ingredientSection, setIngredientSection] = useState<IIngredientSection>();
+	const [isLoading, setIsLoading] = useState<boolean>(false);
 
-export default function IngredientSection(): JSX.Element {
-	return (
+	useEffect(() => {
+		setIsLoading(true);
+
+		ApiService.get<IIngredientSection>(props.apiPath)
+			.then(ingredientSection => {
+				setIngredientSection(ingredientSection);
+			})
+			.then(() => {
+				setIsLoading(false);
+			})
+			.catch(err => {
+				console.log(err);
+			});
+	}, []);
+
+	return isLoading ? (
 		<View>
-			<SoraText extraStyle={styles.ingredientTitle}>Temperos</SoraText>
-			<View style={styles.flexBox}>
-				{temperos.map((tempero) => {
-					return (
-						<SoraText key={tempero.nome} extraStyle={styles.tempero}>
-							{tempero.nome}
-						</SoraText>
-					);
-				})}
-			</View>
+			<SoraText extraStyle={styles.ingrediente}>Carregando</SoraText>
+			<SoraText extraStyle={styles.ingrediente}>Carregando</SoraText>
 		</View>
-	);
+	) : <View>
+		<SoraText extraStyle={styles.ingredientTitle}>{ingredientSection?.title}</SoraText>
+		<View style={styles.flexBox}>
+			{ingredientSection?.ingredients.map((ingrediente) => {
+				return (
+					<SoraText key={ingrediente.id} extraStyle={styles.ingrediente}>
+						{ingrediente.name}
+					</SoraText>
+				);
+			})}
+		</View>
+	</View>;
 }
 
 const styles = StyleSheet.create({
@@ -35,16 +50,17 @@ const styles = StyleSheet.create({
 		flexWrap: 'wrap',
 		marginHorizontal: 16,
 	},
-	tempero: {
+	ingrediente: {
 		backgroundColor: 'black',
 		padding: 8,
 		color: 'white',
 		fontSize: 16,
-		paddingHorizontal: 8,
+		lineHeight: 24,
 		marginRight: 8,
 	},
 	ingredientTitle: {
 		fontSize: 24,
+		lineHeight: 32,
 		marginVertical: 32,
 		paddingHorizontal: 16,
 	},

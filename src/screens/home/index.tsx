@@ -1,11 +1,23 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import Button from '../../common/components/button';
 import SoraText from '../../common/components/text';
 import TemplateScreen from '../../common/screens/template-screen';
 import IngredientSection from './components/ingredient-section';
 
+const reqPaths: string[] = [
+	"carnes-vermelhas",
+	"carboidratos",
+	"grãos",
+	"frutas",
+	"legumes-e-verduras",
+	"aves",
+	"peixes-e-frutos-do-mar"
+];
+
 export default function Home(): JSX.Element {
+	const baseUrl = "http://192.168.1.10:3000/ingredientes";
+
 	return (
 		<View style={styles.container}>
 			<TemplateScreen>
@@ -16,13 +28,17 @@ export default function Home(): JSX.Element {
 						paddingHorizontal: 16,
 					}}
 				>
-          O que há de bom hoje?
+					O que há de bom hoje?
 				</SoraText>
-				<IngredientSection />
+				<FlatList
+					data={reqPaths}
+					renderItem={({ item }) => <IngredientSection apiPath={baseUrl} />}
+					keyExtractor={(item) => item}
+					ListFooterComponent={
+						<Button value="Cozinhar!" extraStyle={styles.buttonMargin}/>
+					}
+				/>
 			</TemplateScreen>
-			<View style={styles.botaoBox}>
-				<Button value="Cozinhar!"/>
-			</View>
 		</View>
 	);
 }
@@ -31,9 +47,7 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1
 	},
-	botaoBox: {
-		position: 'absolute',
-		bottom: 0,
-		width: '100%',
-	},
+	buttonMargin: {
+		marginBottom: 64
+	}
 });
