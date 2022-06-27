@@ -22,11 +22,7 @@ export default function Home(): JSX.Element {
 		<View style={styles.container}>
 			<TemplateScreen>
 				<SoraText
-					extraStyle={{
-						fontSize: 32,
-						marginTop: 16,
-						paddingHorizontal: 16,
-					}}
+					extraStyle={styles.titulo}
 				>
 					O que há de bom hoje?
 				</SoraText>
@@ -35,7 +31,7 @@ export default function Home(): JSX.Element {
 					renderItem={({ item }) => <IngredientSection apiPath={baseUrl} />}
 					keyExtractor={(item) => item}
 					ListFooterComponent={
-						<Button value="Cozinhar!" extraStyle={styles.buttonMargin}/>
+						<Button value="Cozinhar!" extraStyle={styles.buttonMargin} />
 					}
 				/>
 			</TemplateScreen>
@@ -46,6 +42,11 @@ export default function Home(): JSX.Element {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1
+	},
+	titulo: {
+		fontSize: 32,
+		marginTop: 16,
+		paddingHorizontal: 16,
 	},
 	buttonMargin: {
 		marginBottom: 64
