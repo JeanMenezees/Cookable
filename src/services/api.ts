@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export class ApiService { 
 	static async get<T>(url: string): Promise<T> {

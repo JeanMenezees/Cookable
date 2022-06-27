@@ -6,17 +6,17 @@ import TemplateScreen from '../../common/screens/template-screen';
 import IngredientSection from './components/ingredient-section';
 
 const reqPaths: string[] = [
-	"carnes-vermelhas",
-	"carboidratos",
-	"grãos",
-	"frutas",
-	"legumes-e-verduras",
-	"aves",
-	"peixes-e-frutos-do-mar"
+	'carnes-vermelhas',
+	'carboidratos',
+	'grãos',
+	'frutas',
+	'legumes-e-verduras',
+	'aves',
+	'peixes-e-frutos-do-mar'
 ];
 
 export default function Home(): JSX.Element {
-	const baseUrl = "http://192.168.1.10:3000/ingredientes";
+	const baseUrl = 'http://192.168.1.10:3000/ingredientes';
 
 	return (
 		<View style={styles.container}>
