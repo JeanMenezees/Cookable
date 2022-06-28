@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { StyleSheet, View } from 'react-native';
+import SkeletonContent from 'react-native-skeleton-content';
 import SoraText from '../../../../common/components/text';
 import { ApiService } from '../../../../services/api';
 import { IIngredientSection } from './ingredient-section';
@@ -27,8 +28,8 @@ export default function IngredientSection(props: IngredientSectionProps): JSX.El
 
 	return isLoading ? (
 		<View>
-			<SoraText extraStyle={styles.ingrediente}>Carregando</SoraText>
-			<SoraText extraStyle={styles.ingrediente}>Carregando</SoraText>
+			<SkeletonContent containerStyle={{height: 32, width: 72}} isLoading={isLoading}/>
+			<SkeletonContent containerStyle={{height: 24, width: 64}} isLoading={isLoading}/>
 		</View>
 	) : <View>
 		<SoraText extraStyle={styles.ingredientTitle}>{ingredientSection?.title}</SoraText>
