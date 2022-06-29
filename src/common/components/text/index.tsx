@@ -10,6 +10,6 @@ export default function SoraText(props: SoraTextProps): JSX.Element {
 
 const styles = StyleSheet.create({
 	text: {
-		fontFamily: 'Sora_400Regular'
+		fontFamily: 'Sora Regular'
 	}
 });
