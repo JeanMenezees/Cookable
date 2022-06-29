@@ -26,7 +26,7 @@ export default function IngredientSection(props: IngredientSectionProps): JSX.El
 
 	return isLoading ? (
 		<View>
-			<SoraText extraStyle={{color: 'black'}}>Carregando...</SoraText>
+			<SoraText extraStyle={{color: 'black', marginLeft: 16}}>Carregando...</SoraText>
 		</View>
 	) : <View>
 		<SoraText extraStyle={styles.ingredientTitle}>{ingredientSection?.title}</SoraText>
