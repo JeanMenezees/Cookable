@@ -5,7 +5,7 @@ import Recipies from '../../screens/recipies';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../../screens/home';
 
-export default function RootRoute(): JSX.Element {
+export default function TabRoute(): JSX.Element {
 	const Tab = createBottomTabNavigator();
 
 	return (

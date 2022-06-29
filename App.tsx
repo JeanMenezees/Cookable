@@ -4,7 +4,7 @@ import { Sora_400Regular, useFonts } from "@expo-google-fonts/sora";
 import AppLoading from "expo-app-loading";
 
 import { NavigationContainer } from "@react-navigation/native";
-import RootRoute from "./src/routes/root";
+import TabRoute from "./src/routes/tab";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -13,7 +13,7 @@ export default function App() {
 
   return fontsLoaded ? (
     <NavigationContainer>
-      <RootRoute />
+      <TabRoute />
     </NavigationContainer>
   ) : (
     <AppLoading />
